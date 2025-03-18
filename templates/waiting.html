@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finding a Match - Random Video Chat</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Finding Someone to Chat With...</h1>
+        <div class="loader"></div>
+        <p id="waiting-message">Please wait while we connect you with a random stranger</p>
+        <p id="timer">Time in waiting room: <span id="seconds">0</span> seconds</p>
+        <a href="/leave" class="btn-secondary">Cancel</a>
+    </div>
+
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"></script>
+    <script>
+        const socket = io.connect();
+        const userId = "{{ user_id }}";
+        let seconds = 0;
+        let timerInterval;
+
+        // Function to start the timer
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                seconds++;
+                document.getElementById('seconds').textContent = seconds;
+                
+                // Check for a match every 3 seconds
+                if (seconds % 3 === 0) {
+                    socket.emit('waiting-check', { user_id: userId });
+                }
+            }, 1000);
+        }
+
+        // Start the timer when the page loads
+        window.onload = function() {
+            startTimer();
+        };
+
+        // Listen for match-found event
+        socket.on('match-found', (data) => {
+            clearInterval(timerInterval);
+            document.getElementById('waiting-message').textContent = 'Match found! Connecting...';
+            
+            // Redirect to the room
+            window.location.href = `/room/${data.room_id}?partner_id=${data.partner_id}`;
+        });
+
+        // Clean up when leaving the page
+        window.onbeforeunload = function() {
+            clearInterval(timerInterval);
+        };
+    </script>
+</body>
+</html> 

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Chat with Stranger</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Video Chat</h1>
+        
+        <div id="videos-container">
+            <div id="video-grid">
+                <div class="video-wrapper">
+                    <video id="localVideo" autoplay muted></video>
+                    <div class="video-label">You</div>
+                </div>
+                <div class="video-wrapper">
+                    <video id="remoteVideo" autoplay></video>
+                    <div class="video-label">Stranger</div>
+                </div>
+            </div>
+            
+            <div id="controls">
+                <button id="muteBtn" class="control-btn">Mute</button>
+                <button id="videoBtn" class="control-btn">Hide Video</button>
+                <button id="endBtn" class="control-btn end-call">End Call</button>
+            </div>
+        </div>
+        
+        <div id="chat-container">
+            <div id="messages"></div>
+            <div id="chat-input">
+                <input type="text" id="message-input" placeholder="Type a message...">
+                <button id="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js"></script>
+    <script>
+        // Room and partner info
+        const roomId = "{{ room_id }}";
+        const partnerId = "{{ partner_id }}";
+        
+        // Store for later use in script.js
+        window.ROOM_INFO = {
+            roomId: roomId,
+            partnerId: partnerId
+        };
+    </script>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

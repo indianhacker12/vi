@@ -1,0 +1,250 @@
+/* General Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+}
+
+h3 {
+    color: #2c3e50;
+    margin-top: 1.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* Button Styles */
+.btn-primary, .btn-secondary, .control-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    margin: 10px 5px;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #c0392b;
+}
+
+.control-btn {
+    padding: 8px 16px;
+    background-color: #ecf0f1;
+    color: #34495e;
+}
+
+.control-btn:hover {
+    background-color: #bdc3c7;
+}
+
+.end-call {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.end-call:hover {
+    background-color: #c0392b;
+}
+
+/* Home Page */
+.intro {
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.rules {
+    text-align: left;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #f1f1f1;
+}
+
+.rules ul {
+    margin-left: 2rem;
+}
+
+/* Waiting Page */
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#timer {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Video Chat Room */
+#videos-container {
+    margin: 20px auto;
+    max-width: 100%;
+}
+
+#video-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 45%;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+video {
+    width: 100%;
+    border-radius: 10px;
+    background-color: #000;
+    border: 2px solid #3498db;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+}
+
+.video-label {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+#controls {
+    margin: 15px 0;
+}
+
+/* Chat */
+#chat-container {
+    margin: 20px auto;
+    max-width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#messages {
+    height: 300px;
+    overflow-y: auto;
+    padding: 15px;
+    background-color: white;
+    text-align: left;
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 18px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.sent {
+    background-color: #3498db;
+    color: white;
+    margin-left: auto;
+}
+
+.received {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+#chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+#message-input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+#send-btn {
+    border: none;
+    background-color: #3498db;
+    color: white;
+    padding: 0 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#send-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .video-wrapper {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    #video-grid {
+        flex-direction: column;
+    }
+}
